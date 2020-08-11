@@ -1,28 +1,71 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- example-1 -->
+    <div class="example">
+      <div class="container" id="container-1">
+        <div v-for="item of 9" :key="item" :class="['item', 'item'+item]">
+          <p>{{item}}</p>
+        </div>
+      </div>
+      <div class="code">
+        <h3>grid-template-columns & grid-template-rows</h3>
+        <p></p>
+        <code>
+          #container-1{<br>
+            display: grid;<br>
+            grid-template-columns: repeat(3, 100px);<br>
+            grid-template-rows: repeat(3, 100px);<br>
+          }
+        </code>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" scoped>
+// custom css
+#container-1{
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+</style>
+
+<style lang="scss" scoped>
+// common css
+#app{
+  display: grid;
+  .example{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 10px;
+    border: 1px solid black;
+  }
+  .container{
+    margin-right: 10px;
+    justify-self: right;
+    display: grid;
+    grid-gap: 1px;
+    .item{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgb(241, 47, 80);
+      font-size: 25px;
+      color: rgb(255, 255, 255);
+    }
+  }
+  .code{
+    justify-self: left;
+    margin-left: 10px;
+  }
 }
 </style>
